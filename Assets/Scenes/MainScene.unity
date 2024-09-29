@@ -184,9 +184,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardFlipClip: {fileID: 8300000, guid: 88f9b0fdce4762a4aa64ec9a951a26ac, type: 3}
-  matchClip: {fileID: 0}
-  mismatchClip: {fileID: 0}
-  gameOverClip: {fileID: 0}
+  matchClip: {fileID: 8300000, guid: 8dc440fe6f133a04491ac1fe4295734a, type: 3}
+  mismatchClip: {fileID: 8300000, guid: 7779bc8f17bd0ae4191d750e9c800aaf, type: 3}
+  gameOverClip: {fileID: 8300000, guid: 9a0e7af56e382f94c92a7df01b40a752, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         InitializeGame();
+        LoadGame();
     }
 
     private void InitializeGame()
@@ -159,8 +160,8 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
-        // Play game over sound
-        //AudioManager.Instance.PlaySound("GameOver");
+        
+        AudioManager.Instance.PlaySound("GameOver");
         // Display game over UI or restart the game
         
         cardValues.Clear();
@@ -182,5 +183,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+    public void SaveGame()
+    {
+        SaveLoadManager.SaveGameState(this);
+    }
+
+    public void LoadGame()
+    {
+        SaveLoadManager.LoadGameState(this);
+        UpdateUI();
+    }
 }
