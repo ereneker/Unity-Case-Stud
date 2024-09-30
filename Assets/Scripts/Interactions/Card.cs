@@ -26,7 +26,6 @@ public class Card : MonoBehaviour, IPointerClickHandler
             return;
         }
 
-        Debug.Log("Flipped");
         FlipCard();
         gameManager.CardFlipped(this);
     }

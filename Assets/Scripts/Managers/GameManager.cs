@@ -15,17 +15,15 @@ public class GameManager : MonoBehaviour
     
     public GameObject cardPrefab;
     public Transform gameBoard;
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI comboText;
+    
+    [SerializeField] private TextMeshProUGUI comboText;
+    [SerializeField] private TextMeshProUGUI scoreText;
 
     private int matchesFound = 0;
     private int totalMatches;
     private bool isProcessing = false;
 
-    public bool IsProcessing
-    {
-        get { return isProcessing; }
-    }
+    public bool IsProcessing => isProcessing;
 
     private List<int> cardValues = new List<int>();
     
@@ -34,14 +32,14 @@ public class GameManager : MonoBehaviour
 
     public int Score
     {
-        get { return score; }
-        set { score = value; }
+        get => score;
+        set => score = value;
     }
 
     public int ComboMultiplier
     {
-        get { return comboMultiplier; }
-        set { comboMultiplier = value; }
+        get => comboMultiplier;
+        set => comboMultiplier = value;
     }
 
     private void Awake()
@@ -79,6 +77,7 @@ public class GameManager : MonoBehaviour
             GameObject cardObj = Instantiate(cardPrefab, gameBoard);
             Card card = cardObj.GetComponent<Card>();
             card.cardValue = value;
+            card.GetComponentInChildren<TextMeshProUGUI>().text = value.ToString();
         }
     }
 
@@ -107,6 +106,8 @@ public class GameManager : MonoBehaviour
             score += 10 * comboMultiplier;
             comboMultiplier++;
 
+            AudioManager.Instance.PlaySound("Match");
+            
             Destroy(firstFlippedCard.gameObject);
             Destroy(secondFlippedCard.gameObject);
 
@@ -119,6 +120,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            AudioManager.Instance.PlaySound("Mismatch");
             firstFlippedCard.FlipBack();
             secondFlippedCard.FlipBack();
             comboMultiplier = 1;
@@ -160,7 +162,6 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
-        
         AudioManager.Instance.PlaySound("GameOver");
         // Display game over UI or restart the game
         
