@@ -132,6 +132,7 @@ public class GameManager : MonoBehaviour
         secondFlippedCard = null;
         isProcessing = false;
 
+        SaveGame();
     }
 
     private void SetupScreenSize(int gridRows, int gridCols)
